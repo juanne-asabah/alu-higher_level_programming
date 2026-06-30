@@ -1,5 +1,9 @@
-#!/usr/bin/python3
 import os
 import py_compile
 
-py_compile.compile(os.environ.get('PYFILE'))
+source = os.environ.get("PYFILE")
+if source:
+    py_compile.compile(source, cfile=source + "c")
+    print(f"Compiled {source} to {source}c")
+else:
+    print("$PYFILE is either empty or not set")
