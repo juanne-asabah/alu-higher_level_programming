@@ -1,7 +1,6 @@
 #!/bin/bash
 import os
 import py_compile
-
 source = os.environ.get("PYFILE")
 if source:
     py_compile.compile(source, cfile=source + "c")
