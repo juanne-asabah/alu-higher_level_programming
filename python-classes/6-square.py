@@ -75,8 +75,8 @@ class Square:
         """
         if (not isinstance(value, tuple) or
                 len(value) != 2 or
-                not isinstance(value, int) or
-                not isinstance(value, int) or
+                not isinstance(value[0], int) or
+                not isinstance(value[1], int) or
                 value[0] < 0 or
                 value[1] < 0):
             raise TypeError("position must be a tuple of 2 positive integers")
@@ -105,7 +105,7 @@ class Square:
             print("")
 
         for _ in range(self.__size):
-            print(" " * self.__position[0] + "#" * self.__size)
+            print(" * self.__position[0] + "#" * self.__size)
 
     def __str__(self):
         """Generate a string representation matching my_print output.
@@ -121,6 +121,6 @@ class Square:
             result.append("")
 
         for _ in range(self.__size):
-            result.append(" " * self.__position[0] + "#" * self.__size)
+            result.append(" * self.__position[0] + "#" * self.__size)
 
         return "\n".join(result)
