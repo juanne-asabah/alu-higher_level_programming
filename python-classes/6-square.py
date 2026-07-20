@@ -1,26 +1,28 @@
 #!/usr/bin/python3
 """This module defines a Square class with custom printing and positioning.
 
-The module encapsulates a square's dimensions and its printing offset position,
-ensuring strict data validation via property decorators.
+The module provides full encapsulation for a geometric square, allowing users
+to instantiate, validate, calculate area, and print the shape using standard
+output or string typecasting.
 """
 
 
 class Square:
     """A class that defines a geometric square.
 
-    This class provides robust encapsulation of a square's size and positional
-    offset, offering methods to calculate area and print the shape onto standard
-    output with specific horizontal and vertical margins.
+    This class maintains a private size attribute and a positional tuple
+    offset. It supports area calculations, explicit layout printing, and
+    direct string typecasting behavior equivalent to its printing method.
     """
 
     def __init__(self, size=0, position=(0, 0)):
-        """Initialise a new Square instance with size and positional alignment.
+        """Initialise a new Square instance.
 
         Args:
             size (int): The side length of the square. Defaults to 0.
-            position (tuple): A tuple containing two positive integers representing
-                the spacing offsets (horizontal, vertical). Defaults to (0, 0).
+            position (tuple): A tuple containing exactly two positive
+                integers representing horizontal and vertical printing
+                offsets. Defaults to (0, 0).
         """
         self.size = size
         self.position = position
@@ -58,7 +60,7 @@ class Square:
         Returns:
             tuple: A tuple of two positive integers for structural alignment.
         """
-        return self.__size_position
+        return self.__position
 
     @position.setter
     def position(self, value):
@@ -73,12 +75,12 @@ class Square:
         """
         if (not isinstance(value, tuple) or
                 len(value) != 2 or
-                not isinstance(value[0], int) or
-                not isinstance(value[1], int) or
+                not isinstance(value, int) or
+                not isinstance(value, int) or
                 value[0] < 0 or
                 value[1] < 0):
             raise TypeError("position must be a tuple of 2 positive integers")
-        self.__size_position = value
+        self.__position = value
 
     def area(self):
         """Calculate and return the current square area.
@@ -99,8 +101,26 @@ class Square:
             print("")
             return
 
-        for _ in range(self.__size_position[1]):
+        for _ in range(self.__position[1]):
             print("")
 
         for _ in range(self.__size):
-            print(" " * self.__size_position[0] + "#" * self.__size)
+            print(" " * self.__position[0] + "#" * self.__size)
+
+    def __str__(self):
+        """Generate a string representation matching my_print output.
+
+        Returns:
+            str: The visual representation of the square layout.
+        """
+        result = []
+        if self.__size == 0:
+            return ""
+
+        for _ in range(self.__position[1]):
+            result.append("")
+
+        for _ in range(self.__size):
+            result.append(" " * self.__position[0] + "#" * self.__size)
+
+        return "\n".join(result)
