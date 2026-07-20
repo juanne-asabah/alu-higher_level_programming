@@ -9,7 +9,7 @@ integer size, promoting data integrity and robust object-oriented design.
 class Square:
     """A class that defines a geometric square.
 
-    This class enforces strict encapsulation and data validation by ensuring 
+    This class enforces strict encapsulation and data validation by ensuring
     the size attribute is an integer and is greater than or equal to zero.
     """
 

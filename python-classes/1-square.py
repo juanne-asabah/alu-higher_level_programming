@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """This module defines a Square class with a size attribute.
 
-The module provides a foundational blueprint for geometric squares, demonstrating 
+The module provides a foundational blueprint for geometric squares, demonstrating
 the use of private instance attributes for proper encapsulation.
 """
 

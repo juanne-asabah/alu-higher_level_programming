@@ -10,7 +10,7 @@ class Square:
     """A class that defines a geometric square.
 
     This class provides robust encapsulation of a square's size and positional
-    offset, offering methods to calculate area and print the shape onto standard 
+    offset, offering methods to calculate area and print the shape onto standard
     output with specific horizontal and vertical margins.
     """
 
@@ -92,7 +92,7 @@ class Square:
         """Print the square instance to stdout using the '#' character.
 
         The printed square handles horizontal spacing using spaces, and handles
-        vertical spacing using empty new lines. If the size of the square is 
+        vertical spacing using empty new lines. If the size of the square is
         equal to 0, this method prints a single empty line instead.
         """
         if self.__size == 0:
