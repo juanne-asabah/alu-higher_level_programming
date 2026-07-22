@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Module provides a class definition for a geometric rectangle."""  
+"""Module provides a class definition for a geometric rectangle."""
 
 
 class Rectangle:
