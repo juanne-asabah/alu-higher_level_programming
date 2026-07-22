@@ -3,7 +3,7 @@
 
 
 class Rectangle:
-    """This is a class defining a rectangle with private width and height attributes."""
+    """Class defining a rectangle with private width and height attributes."""
     def __init__(self, width=0, height=0):
         """This initializes the rectangle with optional width and height"""
         self.width = width
@@ -16,7 +16,7 @@ class Rectangle:
 
     @width.setter
     def width(self, value):
-        """Setter: Set the private width with type and value validation rules"""
+        """Set the private width with type and value validatioN"""
         if not isinstance(value, int) or isinstance(value, bool):
             raise TypeError("width must be an integer")
         if value < 0:
@@ -30,7 +30,7 @@ class Rectangle:
 
     @height.setter
     def height(self, value):
-        """Setter: Set the private height with type and value validataion rules"""
+        """Set the private height with type and value validataion"""
         if not isinstance(value, int) or isinstance(value, bool):
             raise TypeError("height must be an integer")
         if value < 0:
