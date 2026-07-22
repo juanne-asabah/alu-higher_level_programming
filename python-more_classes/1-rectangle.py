@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This module provides a class definition for a geometric rectrangle."""  
+"""This module provides a class definition for a geometric rectangle."""  
 
 
 class Rectangle:
@@ -16,11 +16,11 @@ class Rectangle:
 
     @width.setter
     def width(self, value):
-        """Setter: Set the private width with type and value validatation rules"""
+        """Setter: Set the private width with type and value validation rules"""
         if not isinstance(value, int) or isinstance(value, bool):
             raise TypeError("width must be an integer")
         if value < 0:
-           raise ValueError("width must be >=0")
+           raise ValueError("width must be >= 0")
         self.__width = value
 
     @property
@@ -32,7 +32,7 @@ class Rectangle:
     def height(self, value):
         """Setter: Set the private height with type and value validataion rules"""
         if not isinstance(value, int) or isinstance(value, bool):
-            raise TypeError("width must be an integer")
-        if value <0:
-            rais ValueError("width must be >=0")
-        self.height = value
+            raise TypeError("height must be an integer")
+        if value < 0:
+            raise ValueError("height must be >= 0")
+        self.__height = value
