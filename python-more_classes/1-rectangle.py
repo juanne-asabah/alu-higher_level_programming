@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""This module provides a class definition for a geometric rectrangle"""  
+
+
 class Rectangle:
     """This is a class defining a rectangle with private width and height attributes."""
     def __init__(self, width=0, height=0):
