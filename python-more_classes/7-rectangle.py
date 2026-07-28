@@ -10,7 +10,7 @@ class Rectangle:
     print_symbol = "#"
 
     def __init__(self, width=0, height=0):
-        """This initializes the rectangle and increments the instance counter."""
+        """Initializes the rectangle and increments instance counter."""
         self.width = width
         self.height = height
         Rectangle.number_of_instances += 1
@@ -54,10 +54,10 @@ class Rectangle:
         return (self.__width + self.__height) * 2
 
     def __str__(self):
-        """Return a string representation of the rectangle using print_symbol."""
+        """Return rectangle's string representation using print_symbol."""
         if self.__width == 0 or self.__height == 0:
             return ""
-        # Convert symbol to string to handle cases where it is set to another type
+        # Convert symbol to string to handle cases when set to another type
         symbol = str(self.print_symbol)
         return "\n".join([symbol * self.__width] * self.__height)
 
