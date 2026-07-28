@@ -4,7 +4,7 @@ Rectangle = __import__('9-rectangle').Rectangle
 
 
 class Square(Rectangle):
-    """A geometric square model that defines customized string print behavior."""
+    """Geometric square model defining customized string print behavior."""
 
     def __init__(self, size):
         """Initialises a new Square instance.
@@ -17,5 +17,5 @@ class Square(Rectangle):
         self.__size = size
 
     def __str__(self):
-        """Generates a customized string representation for Square instances."""
+        """Generates customized string rep' for Square instances."""
         return f"[Square] {self.__size}/{self.__size}"
