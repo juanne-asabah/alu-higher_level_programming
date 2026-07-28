@@ -59,5 +59,5 @@ class Rectangle:
         return f"Rectangle({self.__width}, {self.__height})"
 
     def __del__(self):
-        """Print a termination message when the instance is garbage collected."""
+        """Print termination message when instance is garbage collected."""
         print("Bye rectangle...")
