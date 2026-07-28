@@ -3,8 +3,6 @@
 ===============================
 
     >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
-
-Test present: check instantiation
     >>> bg = BaseGeometry()
 
 Test present: area()
