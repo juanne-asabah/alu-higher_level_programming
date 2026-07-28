@@ -1,107 +1,66 @@
-===============================
-BaseGeometry Test Suite
-===============================
+The BaseGeometry class provides geometric tools and validation checks.
 
-Importing the module components:
+To test the module, we first import BaseGeometry:
     >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
--------------------------------
 Test present: check instantiation
--------------------------------
-Instantiating the class structure:
     >>> bg = BaseGeometry()
-    >>> type(bg)
-    <class '7-base_geometry.BaseGeometry'>
+    >>> isinstance(bg, BaseGeometry)
+    True
 
--------------------------------
 Test present: area()
--------------------------------
-Calling area should raise an unimplemented exception:
     >>> bg.area()
     Traceback (most recent call last):
     Exception: area() is not implemented
 
--------------------------------
 Test present: integer_validator()
--------------------------------
-Verifying that valid positive integers pass without output:
     >>> bg.integer_validator("my_int", 12)
     >>> bg.integer_validator("width", 89)
 
--------------------------------
 Test present: integer_validator("age")
--------------------------------
-Testing age validation edge cases (missing integer values):
     >>> bg.integer_validator("age", "John")
     Traceback (most recent call last):
     TypeError: age must be an integer
 
--------------------------------
 Test present: integer_validator("age", 1)
--------------------------------
-Testing basic minimum valid integer state:
     >>> bg.integer_validator("age", 1)
 
--------------------------------
 Test present: integer_validator("age", 0)
--------------------------------
-Checking value boundary equal to zero:
     >>> bg.integer_validator("age", 0)
     Traceback (most recent call last):
     ValueError: age must be greater than 0
 
--------------------------------
 Test present: integer_validator("age", -4)
--------------------------------
-Checking value boundary below zero:
     >>> bg.integer_validator("age", -4)
     Traceback (most recent call last):
     ValueError: age must be greater than 0
 
--------------------------------
 Test present: integer_validator("age", "4")
--------------------------------
-Checking invalid string integer assignments:
     >>> bg.integer_validator("age", "4")
     Traceback (most recent call last):
     TypeError: age must be an integer
 
--------------------------------
 Test present: integer_validator("age", (4,))
--------------------------------
-Checking invalid tuple values:
     >>> bg.integer_validator("age", (4,))
     Traceback (most recent call last):
     TypeError: age must be an integer
 
--------------------------------
 Test present: integer_validator("age", [3])
--------------------------------
-Checking invalid list values:
     >>> bg.integer_validator("age", [3])
     Traceback (most recent call last):
     TypeError: age must be an integer
 
--------------------------------
 Test present: integer_validator("age", True)
--------------------------------
-Booleans are subclassed from ints, but must fail type checking:
     >>> bg.integer_validator("age", True)
     Traceback (most recent call last):
     TypeError: age must be an integer
 
--------------------------------
 Test present: integer_validator("age", {3, 4})
--------------------------------
-Checking invalid set values:
     >>> bg.integer_validator("age", {3, 4})
     Traceback (most recent call last):
     TypeError: age must be an integer
 
--------------------------------
 Test present: integer_validator("age", None)
--------------------------------
-Checking invalid None values:
     >>> bg.integer_validator("age", None)
     Traceback (most recent call last):
     TypeError: age must be an integer
