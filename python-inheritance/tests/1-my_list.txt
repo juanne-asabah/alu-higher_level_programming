@@ -1,0 +1,62 @@
+The MyList Test Suite runs interactive python code.
+
+    >>> MyList = __import__('1-my_list').MyList
+
+    >>> my_list = MyList()
+    >>> type(my_list)
+    <class '1-my_list.MyList'>
+
+    >>> isinstance(my_list, list)
+    True
+    >>> issubclass(MyList, list)
+    True
+
+    >>> str(my_list)
+    '[]'
+
+    >>> print(my_list)
+    []
+    >>> my_list.print_sorted()
+    []
+
+    >>> my_list.append(42)
+    >>> print(my_list)
+    [42]
+
+    >>> sorted_list = MyList()
+    >>> sorted_list.append(10)
+    >>> sorted_list.append(20)
+    >>> sorted_list.append(30)
+    >>> print(sorted_list)
+    [10, 20, 30]
+    >>> sorted_list.print_sorted()
+    [10, 20, 30]
+
+    >>> unsorted_list = MyList()
+    >>> unsorted_list.append(5)
+    >>> unsorted_list.append(1)
+    >>> unsorted_list.append(3)
+    >>> print(unsorted_list)
+    [5, 1, 3]
+    >>> unsorted_list.print_sorted()
+    [1, 3, 5]
+    >>> print(unsorted_list)
+    [5, 1, 3]
+
+    >>> mixed_list = MyList()
+    >>> mixed_list.append(-10)
+    >>> mixed_list.append(5)
+    >>> mixed_list.append(-2)
+    >>> mixed_list.append(0)
+    >>> print(mixed_list)
+    [-10, 5, -2, 0]
+    >>> mixed_list.print_sorted()
+    [-10, -2, 0, 5]
+    >>> print(mixed_list)
+    [-10, 5, -2, 0]
+
+    >>> static_list = MyList()
+    >>> static_list.print_sorted()
+    []
+    >>> print(static_list)
+    []
