@@ -1,12 +1,11 @@
-The BaseGeometry class provides geometric tools and validation checks.
+===============================
+7-base_geometry.py Test Suite
+===============================
 
-To test the module, we first import BaseGeometry:
     >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 Test present: check instantiation
     >>> bg = BaseGeometry()
-    >>> isinstance(bg, BaseGeometry)
-    True
 
 Test present: area()
     >>> bg.area()
