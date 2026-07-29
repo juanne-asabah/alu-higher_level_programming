@@ -13,7 +13,7 @@ if __name__ == "__main__":
     # Setup database connection engine using command line arguments
     engine = create_engine(
         'mysql+mysqldb://{}:{}@localhost/{}'.format(
-            sys.argv, sys.argv, sys.argv
+            sys.argv[1], sys.argv[2], sys.argv[3]
         ),
         pool_pre_ping=True
     )
@@ -22,13 +22,14 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    # Query City and State together by matching relationships sorted by city id
-    results = session.query(State, City).join(
-        City, State.id == City.state_id
+    # Query City and State together using an explicit relationship join
+    # Sorted in ascending order by cities.id
+    results = session.query(City, State).filter(
+        City.state_id == State.id
     ).order_by(City.id.asc()).all()
 
     # Loop through matched record entities and format display
-    for state, city in results:
+    for city, state in results:
         print("{}: ({}) {}".format(state.name, city.id, city.name))
 
     # Close session
