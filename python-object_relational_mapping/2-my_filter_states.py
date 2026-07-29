@@ -25,9 +25,12 @@ if __name__ == "__main__":
     # Create a cursor object to execute queries
     cursor = db.cursor()
 
-    # Formulate the query using string format as strictly instructed by the task
+    # Formulate the query using string format as strictly instructed
     # BINARY ensures case-sensitive exact matching
-    query = "SELECT * FROM states WHERE BINARY name = '{}' ORDER BY id ASC".format(state_name_searched)
+    query = (
+        "SELECT * FROM states WHERE BINARY name = '{}' "
+        "ORDER BY id ASC"
+    ).format(state_name_searched)
     cursor.execute(query)
 
     # Fetch all matching rows
