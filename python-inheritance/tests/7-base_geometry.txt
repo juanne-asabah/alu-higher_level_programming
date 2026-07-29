@@ -1,0 +1,62 @@
+The BaseGeometry Test Suite
+===========================
+
+    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+    >>> bg = BaseGeometry()
+
+Checking area() implementation:
+    >>> bg.area()
+    Traceback (most recent call last):
+    Exception: area() is not implemented
+
+Checking valid integer_validator() usage:
+    >>> bg.integer_validator("my_int", 12)
+    >>> bg.integer_validator("width", 89)
+
+Checking integer_validator with non-integer "age":
+    >>> bg.integer_validator("age", "John")
+    Traceback (most recent call last):
+    TypeError: age must be an integer
+
+Checking integer_validator with valid "age":
+    >>> bg.integer_validator("age", 1)
+
+Checking integer_validator with "age" as 0:
+    >>> bg.integer_validator("age", 0)
+    Traceback (most recent call last):
+    ValueError: age must be greater than 0
+
+Checking integer_validator with negative "age":
+    >>> bg.integer_validator("age", -4)
+    Traceback (most recent call last):
+    ValueError: age must be greater than 0
+
+Checking integer_validator with string integer:
+    >>> bg.integer_validator("age", "4")
+    Traceback (most recent call last):
+    TypeError: age must be an integer
+
+Checking integer_validator with tuple:
+    >>> bg.integer_validator("age", (4,))
+    Traceback (most recent call last):
+    TypeError: age must be an integer
+
+Checking integer_validator with list:
+    >>> bg.integer_validator("age", [3])
+    Traceback (most recent call last):
+    TypeError: age must be an integer
+
+Checking integer_validator with boolean True:
+    >>> bg.integer_validator("age", True)
+    Traceback (most recent call last):
+    TypeError: age must be an integer
+
+Checking integer_validator with set:
+    >>> bg.integer_validator("age", {3, 4})
+    Traceback (most recent call last):
+    TypeError: age must be an integer
+
+Checking integer_validator with None:
+    >>> bg.integer_validator("age", None)
+    Traceback (most recent call last):
+    TypeError: age must be an integer
