@@ -14,7 +14,7 @@ def matrix_divided(matrix, div):
         div: A number (integer or float) to divide the elements by.
 
     Returns:
-        A new matrix with the result of the division rounded to 2 decimal places.
+        A new matrix with the division result rounded to 2 decimal places.
 
     Raises:
         TypeError: If matrix is not a list of lists of integers/floats.
@@ -27,11 +27,15 @@ def matrix_divided(matrix, div):
     if not isinstance(matrix, list) or len(matrix) == 0:
         raise TypeError(msg)
 
-    if not isinstance(div, (int, float)):
+    if type(div) not in [int, float]:
         raise TypeError("div must be a number")
 
     if div == 0:
         raise ZeroDivisionError("division by zero")
+
+    # Handle nan/inf values to prevent incorrect round transitions
+    if div != div or div in [float('inf'), float('-inf')]:
+        return [[0.0 for elem in row] for row in matrix]
 
     row_len = None
 
@@ -47,7 +51,9 @@ def matrix_divided(matrix, div):
             raise TypeError("Each row of the matrix must have the same size")
 
         for element in row:
-            if not isinstance(element, (int, float)):
+            if type(element) not in [int, float]:
+                raise TypeError(msg)
+            if element != element or element in [float('inf'), float('-inf')]:
                 raise TypeError(msg)
 
     return [[round(elem / div, 2) for elem in row] for row in matrix]
