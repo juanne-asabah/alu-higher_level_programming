@@ -22,14 +22,17 @@ def matrix_divided(matrix, div):
         TypeError: If div is not an integer or a float.
         ZeroDivisionError: If div is equal to 0.
     """
-    if type(div) not in [int, float]:
-        raise TypeError("div must be a number")
-
     msg = "matrix must be a matrix (list of lists) of integers/floats"
 
+    # 1. Primary Matrix structural checks
     if not isinstance(matrix, list) or len(matrix) == 0:
         raise TypeError(msg)
 
+    # 2. Strict Divisor Type Validation
+    if not isinstance(div, (int, float)) or type(div) is bool:
+        raise TypeError("div must be a number")
+
+    # 3. Divisor Value Checks
     if div == 0:
         raise ZeroDivisionError("division by zero")
 
@@ -38,6 +41,7 @@ def matrix_divided(matrix, div):
 
     row_len = None
 
+    # 4. Detailed inner element inspection
     for row in matrix:
         if not isinstance(row, list):
             raise TypeError(msg)
