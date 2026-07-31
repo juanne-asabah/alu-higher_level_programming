@@ -5,9 +5,9 @@ import requests
 
 
 if __name__ == "__main__":
-    q = sys.argv if len(sys.argv) > 1 else ""
-    url = "http://0.0.0"
-    payload = {'q': q}
+    letter = sys.argv[1] if len(sys.argv) > 1 else ""
+    url = "http://0.0.0.0:5000/search_user"
+    payload = {'q': letter}
 
     try:
         response = requests.post(url, data=payload)
