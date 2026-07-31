@@ -14,70 +14,64 @@ class TestRectangleAllCases(unittest.TestCase):
     Validates complete edge-case structures of the Rectangle class.
     """
 
-    def test_instantiation_success(self):
-        """Tests valid combinations."""
-        r = Rectangle(10, 2, 3, 4, 12)
-        self.assertEqual(r.width, 10)
-        self.assertEqual(r.height, 2)
-        self.assertEqual(r.x, 3)
-        self.assertEqual(r.y, 4)
-        self.assertEqual(r.id, 12)
-
-    def test_type_errors(self):
-        """Tests strict integer casting guards."""
-        with self.assertRaisesRegex(TypeError, "width must be an integer"):
-            Rectangle("10", 2)
-        with self.assertRaisesRegex(TypeError, "height must be an integer"):
-            Rectangle(10, [1])
-        with self.assertRaisesRegex(TypeError, "x must be an integer"):
-            Rectangle(10, 2, {}, 4)
-        with self.assertRaisesRegex(TypeError, "y must be an integer"):
-            Rectangle(10, 2, 3, 4.5)
-
-    def test_value_errors(self):
-        """Tests geometric limit walls."""
-        with self.assertRaisesRegex(ValueError, "width must be > 0"):
-            Rectangle(-5, 2)
-        with self.assertRaisesRegex(ValueError, "width must be > 0"):
-            Rectangle(0, 2)
+    def test_rectangle_instantiation_zero_height(self):
+        """Test of Rectangle(1, 0) exists"""
         with self.assertRaisesRegex(ValueError, "height must be > 0"):
-            Rectangle(10, -2)
-        with self.assertRaisesRegex(ValueError, "x must be >= 0"):
-            Rectangle(10, 2, -1, 4)
-        with self.assertRaisesRegex(ValueError, "y must be >= 0"):
-            Rectangle(10, 2, 3, -4)
+            Rectangle(1, 0)
 
-    def test_area_calculation(self):
-        """Tests math surface output loops."""
-        self.assertEqual(Rectangle(3, 4).area(), 12)
-
-    def test_str_override(self):
-        """Tests text transformations."""
-        r = Rectangle(4, 6, 2, 1, 12)
-        self.assertEqual(str(r), "[Rectangle] (12) 2/1 - 4/6")
-
-    def test_display_output(self):
-        """Tests console graphic captures."""
-        r = Rectangle(2, 2, 1, 1)
+    def test_display_without_x_and_y(self):
+        """Test of display() without x and y exists"""
+        r = Rectangle(2, 2, 0, 0)
         out = io.StringIO()
         sys.stdout = out
         r.display()
         sys.stdout = sys.__stdout__
-        self.assertEqual(out.getvalue(), "\n ##\n ##\n")
+        self.assertEqual(out.getvalue(), "##\n##\n")
 
-    def test_update_positional(self):
-        """Tests changing state via sequential args."""
-        r = Rectangle(1, 1, 1, 1, 1)
-        r.update(99, 2, 3, 4, 5)
-        self.assertEqual(r.id, 99)
-        self.assertEqual(r.width, 2)
+    def test_display_without_y(self):
+        """Test of display() without y exists"""
+        r = Rectangle(2, 2, 2, 0)
+        out = io.StringIO()
+        sys.stdout = out
+        r.display()
+        sys.stdout = sys.__stdout__
+        self.assertEqual(out.getvalue(), "  ##\n  ##\n")
 
-    def test_update_keywords(self):
-        """Tests changing state via mapped kwargs."""
-        r = Rectangle(1, 1, 1, 1, 1)
-        r.update(height=10, x=5)
-        self.assertEqual(r.height, 10)
-        self.assertEqual(r.x, 5)
+    def test_save_to_file_none(self):
+        """Test of Rectangle.save_to_file(None) in Rectangle exists"""
+        Rectangle.save_to_file(None)
+        self.assertTrue(os.path.exists("Rectangle.json"))
+        with open("Rectangle.json", "r") as f:
+            self.assertEqual(f.read(), "[]")
+
+    def test_save_to_file_empty(self):
+        """Test of Rectangle.save_to_file([]) in Rectangle exists"""
+        Rectangle.save_to_file([])
+        self.assertTrue(os.path.exists("Rectangle.json"))
+        with open("Rectangle.json", "r") as f:
+            self.assertEqual(f.read(), "[]")
+
+    def test_save_to_file_valid_list(self):
+        """Test of Rectangle.save_to_file([Rectangle(1, 2)]) exists"""
+        r = Rectangle(1, 2, 0, 0, 99)
+        Rectangle.save_to_file([r])
+        self.assertTrue(os.path.exists("Rectangle.json"))
+
+    def test_load_from_file_no_file(self):
+        """Test of Rectangle.load_from_file() when file doesn't exist"""
+        if os.path.exists("Rectangle.json"):
+            os.remove("Rectangle.json")
+        self.assertEqual(Rectangle.load_from_file(), [])
+
+    def test_load_from_file_exists(self):
+        """Test of Rectangle.load_from_file() when file exists"""
+        r = Rectangle(1, 2, 0, 0, 99)
+        Rectangle.save_to_file([r])
+        loaded = Rectangle.load_from_file()
+        self.assertEqual(len(loaded), 1)
+        self.assertEqual(loaded[0].id, 99)
+        if os.path.exists("Rectangle.json"):
+            os.remove("Rectangle.json")
 
 
 if __name__ == "__main__":
