@@ -44,3 +44,15 @@ Both arguments invalid (evaluates parameter a order path first):
 Checking standard float casting operations:
     >>> add_integer(4.6, 5.9)
     9
+
+Handling float overflow (Infinity boundary limits):
+    >>> add_integer(float('inf'), 2)
+    Traceback (most recent call last):
+        ...
+    TypeError: a must be an integer
+
+Handling undefined mathematical floats (NaN inputs):
+    >>> add_integer(1, float('nan'))
+    Traceback (most recent call last):
+        ...
+    TypeError: b must be an integer
