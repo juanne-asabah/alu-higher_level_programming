@@ -24,32 +24,19 @@ def matrix_divided(matrix, div):
     """
     msg = "matrix must be a matrix (list of lists) of integers/floats"
 
-    # 1. Primary Matrix structural checks
+    # 1. First validate matrix type and outer structure
     if not isinstance(matrix, list) or len(matrix) == 0:
         raise TypeError(msg)
 
-    # 2. Strict Divisor Type Validation
-    if not isinstance(div, (int, float)) or type(div) is bool:
-        raise TypeError("div must be a number")
-
-    # 3. Divisor Value Checks
-    if div == 0:
-        raise ZeroDivisionError("division by zero")
-
-    if div != div or div in [float('inf'), float('-inf')]:
-        return [[0.0 for elem in row] for row in matrix]
-
     row_len = None
 
-    # 4. Detailed inner element inspection
+    # 2. Fully inspect matrix inner structure, row uniformities, and elements
     for row in matrix:
-        if not isinstance(row, list):
+        if not isinstance(row, list) or len(row) == 0:
             raise TypeError(msg)
 
         if row_len is None:
             row_len = len(row)
-            if row_len == 0:
-                raise TypeError(msg)
         elif len(row) != row_len:
             raise TypeError("Each row of the matrix must have the same size")
 
@@ -58,5 +45,16 @@ def matrix_divided(matrix, div):
                 raise TypeError(msg)
             if element != element or element in [float('inf'), float('-inf')]:
                 raise TypeError(msg)
+
+    # 3. Only validate div after the matrix is completely verified
+    if type(div) not in [int, float]:
+        raise TypeError("div must be a number")
+
+    if div == 0:
+        raise ZeroDivisionError("division by zero")
+
+    # 4. Perform calculation handles
+    if div in [float('inf'), float('-inf')]:
+        return [[0.0 for elem in row] for row in matrix]
 
     return [[round(elem / div, 2) for elem in row] for row in matrix]
