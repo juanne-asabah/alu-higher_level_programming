@@ -22,18 +22,17 @@ def matrix_divided(matrix, div):
         TypeError: If div is not an integer or a float.
         ZeroDivisionError: If div is equal to 0.
     """
+    if type(div) not in [int, float]:
+        raise TypeError("div must be a number")
+
     msg = "matrix must be a matrix (list of lists) of integers/floats"
 
     if not isinstance(matrix, list) or len(matrix) == 0:
         raise TypeError(msg)
 
-    if type(div) not in [int, float]:
-        raise TypeError("div must be a number")
-
     if div == 0:
         raise ZeroDivisionError("division by zero")
 
-    # Handle nan/inf values to prevent incorrect round transitions
     if div != div or div in [float('inf'), float('-inf')]:
         return [[0.0 for elem in row] for row in matrix]
 
