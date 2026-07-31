@@ -5,17 +5,20 @@ containing a first name and a last name.
 """
 
 
-def say_my_name(first_name, last_name=""):
+def say_my_name(first_name=None, last_name=""):
     """
-    Prints "My name is <first name> <last name>".
+    Prints My name is <first name> <last name>.
 
     Args:
         first_name: A string representing the first name.
         last_name: A string representing the last name (defaults to "").
 
     Raises:
-        TypeError: If either first_name or last_name is not a string.
+        TypeError: If either first_name or last_name is not a string,
+                   or if required arguments are missing.
     """
+    if first_name is None:
+        raise TypeError("first_name must be a string")
     if not isinstance(first_name, str):
         raise TypeError("first_name must be a string")
     if not isinstance(last_name, str):

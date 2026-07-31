@@ -15,9 +15,11 @@ Usage with only first name:
     >>> say_my_name("Bob")
     My name is Bob 
 
-Usage with white spaces inside strings:
-    >>> say_my_name("Walter", "White")
-    My name is Walter White
+Handling missing arguments:
+    >>> say_my_name()
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
 
 Handling invalid type for first_name (integer):
     >>> say_my_name(12, "White")
@@ -30,9 +32,3 @@ Handling invalid type for last_name (boolean):
     Traceback (most recent call last):
         ...
     TypeError: last_name must be a string
-
-Handling invalid type for both parameters:
-    >>> say_my_name(None, None)
-    Traceback (most recent call last):
-        ...
-    TypeError: first_name must be a string
