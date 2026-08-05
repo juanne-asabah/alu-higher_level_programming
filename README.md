@@ -1,15 +1,18 @@
-# Python - Almost a Circle
+# Python - Import & Modules
 
-## Description
-This project focuses on reviewing all Python Object-Oriented Programming (OOP) concepts.
-It covers designing and implementing foundational classes, inheritance structures,
-input validations, geometric rendering methods, and robust unit testing setups.
+This project covers how to import functions and variables from other files, use command-line arguments via the `sys` module, prevent code from executing upon import using `__name__ == "__main__"`, and inspect compiled `.pyc` modules.
 
-## Requirements
-* All files interpreted/compiled on Ubuntu 20.04 LTS using python3 (version 3.8.5).
-* All files adhere strictly to the pycodestyle style guide (version 2.7.*).
-* Every module, class, and method features complete sentence documentation string structures.
+## Technologies
+* Scripts written in **Python 3.8.x**
+* Tested on **Ubuntu 20.04 LTS**
 
-## Directory Structure
-* `models/` - Contains the foundational Base class along with Rectangle and Square subclasses.
-* `tests/` - Holds extensive unittest module validation scripts mirroring the exact application path.
+## Files & Tasks Descriptions
+
+| File | Description |
+| --- | --- |
+| `0-add.py` | Imports an addition function from an external file and prints a formatted sum. |
+| `1-calculation.py` | Imports basic math operators (add, sub, mul, div) from a module and applies them to specific variables. |
+| `2-args.py` | Prints the total number of arguments passed via the CLI alongside a indexed list of values. |
+| `3-infinite_add.py` | Computes and displays the absolute sum of all provided integer inputs from the terminal. |
+| `4-hidden_discovery.py` | Decodes a compiled `.pyc` file, sorting and listing all local names that do not start with a double underscore (`__`). |
+| `5-variable_load.py` | Dynamically references and prints a standalone variable integer from an external configuration file. |
